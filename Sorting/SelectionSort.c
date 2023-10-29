@@ -3,12 +3,12 @@
 #include <time.h>
 #include "Sort.h"
 
-void bubblesort(int size, int *data){
+void selectionsort(int size, int *data){
     int i, j;
     for(i = 0; i < size; i++){
-        for(j = 0; j < size - i - 1; j++){
-            if(data[j] > data[j+1]){
-                swap(&data[j], &data[j+1]);
+        for(j = i+1; j < size; j++){
+            if(data[i] > data[j]){
+                swap(&data[i], &data[j]);
             }
         }
         printarray(size, data);
@@ -27,7 +27,7 @@ void main(){
 
     //sorting
     printf("sorting:\n");
-    bubblesort(size, data);
+    selectionsort(size, data);
 
     //result
     printf("result:\n");

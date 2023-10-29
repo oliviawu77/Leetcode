@@ -1,14 +1,19 @@
 #include <stdio.h>
 #include <stdlib.h>
-#include <time.h>
 #include "Sort.h"
 
-void bubblesort(int size, int *data){
-    int i, j;
-    for(i = 0; i < size; i++){
-        for(j = 0; j < size - i - 1; j++){
-            if(data[j] > data[j+1]){
-                swap(&data[j], &data[j+1]);
+void insertionsort(int size, int *data){
+    int i, j, k;
+    int tmp;
+    for(i = 1; i < size; i++){
+        for(j = 0; j < i; j++){
+            if(data[j] > data[i]){
+                tmp = data[i];
+                for(k = i-1; k >= j; k--){
+                    data[k+1] = data[k];    
+                }
+                data[j] = tmp;
+                break;
             }
         }
         printarray(size, data);
@@ -27,7 +32,7 @@ void main(){
 
     //sorting
     printf("sorting:\n");
-    bubblesort(size, data);
+    insertionsort(size, data);
 
     //result
     printf("result:\n");
